@@ -1,4 +1,5 @@
 import os
+from typing import *
 
 import constants
 from PySide6.QtCore import QObject, QPointF, QRectF, Qt, Signal
@@ -16,25 +17,26 @@ class Signals(QObject):
     doubleclicked = Signal()
 
 
+# 卡牌
 class Card(QGraphicsPixmapItem):
     def __init__(self, value, suit):
         super().__init__()
 
-        self.signals = Signals()
+        self.signals = Signals()  # 信号写在这里
 
-        self.stack = None
-        self.child = None
+        self.stack = None  # 所属栈
+        self.child = None  # 孩子
 
         self.value = value
         self.suit = suit
         self.side = None  # face | back
 
-        self.vector = None
+        self.vector = None  # 向量
+
         # 边界,可动,限制移动
         self.setShapeMode(QGraphicsPixmapItem.ShapeMode.BoundingRectShape)
         self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
         self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemSendsGeometryChanges)
-
 
         self.load_images()
 
@@ -58,6 +60,7 @@ class Card(QGraphicsPixmapItem):
     @property
     def is_face_up(self):
         return self.side == constants.SIDE_FACE
+
     # 颜色 -> red | black
     @property
     def color(self):
@@ -85,14 +88,15 @@ class Card(QGraphicsPixmapItem):
     def mouseReleaseEvent(self, event):
         self.stack.deactivate()
 
-        items = self.collidingItems() # 获取与当前项碰撞的图形项列表。
+        items = self.collidingItems()  # 获取与当前项碰撞的图形项列表。
         if items:
             for item in items:
-                if(isinstance(item, Card) and item.stack != self.stack) or (
-                    isinstance(item, StackBase) and item != self.stack
+                # 匹配
+                if (isinstance(item, Card) and item.stack != self.stack) or (
+                        isinstance(item, StackBase) and item != self.stack
                 ):
                     if item.stack.is_valid_drop(self):
-                        cards = self.stack.remove_card(self) # children for workstack
+                        cards = self.stack.remove_card(self)  # children for workstack
                         item.stack.add_cards(cards)
                         break
 
@@ -107,15 +111,16 @@ class Card(QGraphicsPixmapItem):
 
         super().mouseDoubleClickEvent(event)
 
+
 # 父类
 class StackBase(QGraphicsRectItem):
     def __init__(self):
         super().__init__()
 
-        self.setRect(QRectF(constants.CARD_RECT)) #卡牌大小
-        self.setZValue(-1) # 栈位
+        self.setRect(QRectF(constants.CARD_RECT))  # 卡牌大小
+        self.setZValue(-1)  # 栈位
 
-        self.cards = [] # 卡牌表
+        self.cards = []  # 卡牌表
 
         self.stack = self
         self.setup()
@@ -138,22 +143,23 @@ class StackBase(QGraphicsRectItem):
     def deactivate(self):
         pass
 
+    # stackbase ->
     def add_card(self, card, update=True):
-        card.stack = self # 更新卡牌的所属栈
-        self.cards.append(card) #更新该栈的卡牌
+        card.stack = self  # 更新卡牌的当前所属栈
+        self.cards.append(card)  # 更新该栈的卡牌堆
         if update:
             self.update()
 
     def add_cards(self, cards):
         for card in cards:
             self.add_card(card, update=False)
-        self.update() # 结束更新视图
+        self.update()  # 结束更新视图
 
     def remove_card(self, card):
         card.stack = None
         self.cards.remove(card)
         self.update()
-        return [card] # 返回孩子列表
+        return [card]  # 返回孩子列表
 
     # 清空
     def remove_all_cards(self):
@@ -167,16 +173,18 @@ class StackBase(QGraphicsRectItem):
     def is_free_card(self, card):
         return False
 
+
 # 桥牌
 class DeckStack(StackBase):
-    offset_x = -0.2  # 偏移
+    # 调用父类的update()
+    offset_x = -0.2  # 牌偏移
     offset_y = -0.3
 
-    restack_counter = 0
+    restack_counter = 0  # 回合计数器
 
     # 重置
     def reset(self):
-        super().reset() # remove_all_cards
+        super().reset()  # remove_all_cards
         self.restack_counter = 0
         self.set_color(Qt.GlobalColor.green)
 
@@ -217,7 +225,6 @@ class DeckStack(StackBase):
         except IndexError:
             pass
 
-
     # 设置颜色
     def set_color(self, color):
         color = QColor(color)
@@ -229,6 +236,7 @@ class DeckStack(StackBase):
     # 禁止落牌
     def is_valid_drop(self, card):
         return False
+
 
 # 展示桥牌
 class DealStack(StackBase):
@@ -245,7 +253,7 @@ class DealStack(StackBase):
         self.setBrush(brush)
 
     def reset(self):
-        super().reset() # remove_all_cards
+        super().reset()  # remove_all_cards
         self.spread_from = 0
 
     # 禁止落牌
@@ -307,7 +315,7 @@ class WorkStack(StackBase):
 
         super().add_card(card, update=update)
 
-    def remove_card(self, card):
+    def remove_card(self, card) -> List[Card]:
         index = self.cards.index(card)
         self.cards, cards = self.cards[:index], self.cards[index:]
 
@@ -365,8 +373,8 @@ class DropStack(StackBase):
 
     def add_card(self, card, update=True):
         super().add_card(card, update=update)
-        self.suit = card.suit # 栈花色更新
-        self.value = self.cards[-1].value #栈顶值更新
+        self.suit = card.suit  # 栈花色更新
+        self.value = self.cards[-1].value  # 栈顶值更新
 
         if self.is_complete:
             self.signals.comlpete.emit()
@@ -379,6 +387,7 @@ class DropStack(StackBase):
     @property
     def is_complete(self):
         return self.value == 13
+
 
 # 发牌器
 class DealTrigger(QGraphicsRectItem):

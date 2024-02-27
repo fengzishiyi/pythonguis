@@ -5,11 +5,12 @@ from PySide6.QtGui import QImage
 
 WINDOW_SIZE = 840, 600 # tuple
 
-CARD_DIMENSIONS = QSize(80, 116)  # 尺寸
-CARD_RECT = QRect(0, 0, 80, 116)
+CARD_DIMENSIONS = QSize(80, 116)  # 二维对象
+CARD_RECT = QRect(0, 0, 80, 116) #矩形
 CARD_SPACING_X = 110 # 卡槽间隔
 CARD_BACK = QImage(os.path.join('images','back.png'))
 
+# DealTrigger->
 DEAL_RECT = QRect(30, 30, 110, 140)
 
 OFFSET_X = 50
