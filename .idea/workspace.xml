@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69b3cf80-652c-4bb1-9b3f-b64729defec2" name="更改" comment="add widget colorbutton">
-      <change afterPath="$PROJECT_DIR$/widgets/palette/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/widgets/palette/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/widgets/palette/palette.py" afterDir="false" />
+    <list default="true" id="69b3cf80-652c-4bb1-9b3f-b64729defec2" name="更改" comment="add widget palette">
+      <change afterPath="$PROJECT_DIR$/widgets/passwordedit/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/widgets/passwordedit/eye.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/widgets/passwordedit/hidden.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/widgets/passwordedit/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/widgets/passwordedit/password.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,12 +50,47 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/github",
+    "last_opened_file_path": "D:/my_python/pythonguis/widgets/passwordedit",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\my_python\pythonguis\widgets\passwordedit" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonguis" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/widgets/passwordedit" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/widgets/passwordedit/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -69,13 +106,14 @@
     <MESSAGE value="solitaire without animation" />
     <MESSAGE value="without item exegesis" />
     <MESSAGE value="add widget colorbutton" />
-    <option name="LAST_COMMIT_MESSAGE" value="add widget colorbutton" />
+    <MESSAGE value="add widget palette" />
+    <option name="LAST_COMMIT_MESSAGE" value="add widget palette" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pythonguis$items.coverage" NAME="items 覆盖结果" MODIFIED="1709006990440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/solitaire" />
     <SUITE FILE_PATH="coverage/pythonguis$test.coverage" NAME="test 覆盖结果" MODIFIED="1709175181802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/widgets/colorbutton" />
     <SUITE FILE_PATH="coverage/pythonguis$main__2_.coverage" NAME="main (2) 覆盖结果" MODIFIED="1709258660915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/widgets/palette" />
     <SUITE FILE_PATH="coverage/pythonguis$main__1_.coverage" NAME="main (1) 覆盖结果" MODIFIED="1709258656122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/widgets/colorbutton" />
-    <SUITE FILE_PATH="coverage/pythonguis$main.coverage" NAME="main 覆盖结果" MODIFIED="1709260564457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/widgets/palette" />
+    <SUITE FILE_PATH="coverage/pythonguis$main.coverage" NAME="main 覆盖结果" MODIFIED="1709266021382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/widgets/passwordedit" />
   </component>
 </project>
